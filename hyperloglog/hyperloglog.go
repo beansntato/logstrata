@@ -1,6 +1,7 @@
-package main
+package hyperloglog
 
 import (
+	"fmt"
 	"math"
 	"math/bits"
 
@@ -36,6 +37,7 @@ func (h *HyperLogLog) Add(v string) {
 	// x := hash(v)
 
 	x := xxhash.Sum64String(v)
+	fmt.Println("x", x)
 	// // j:= v.substr(b) + 1; b = log base 2 of (m); b first b bits as identifier
 	bucket := x >> (64 - h.b)
 	// p(w) = position of leftmost 1;  w = remaining bits;
